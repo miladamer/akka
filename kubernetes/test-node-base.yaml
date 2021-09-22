@@ -51,6 +51,9 @@ spec:
         - name: multi-node-udp
           containerPort: 6000
           protocol: UDP
+        - name: multi-node-udp2
+          containerPort: 6001
+          protocol: UDP
         - name: server-multi
           containerPort: 4711
           protocol: TCP
@@ -90,3 +93,7 @@ spec:
       name: multi-node-udp
       port: 6000
       targetPort: 6000
+    - protocol: UDP
+      name: multi-node-udp2
+      port: 6001
+      targetPort: 6001

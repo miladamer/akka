@@ -27,10 +27,11 @@ class ClusterRemoteFeaturesConfig(artery: Boolean) extends MultiNodeConfig {
   val third = role("third")
 
   private val baseConfig = {
+    val port =  if (artery) MultiNodeSpec.udpPort else MultiNodeSpec.tcpPort
     ConfigFactory.parseString(s"""
       akka.remote.log-remote-lifecycle-events = off
       akka.remote.artery.enabled = $artery
-      akka.remote.artery.canonical.port = ${MultiNodeSpec.selfPort}
+      akka.remote.artery.canonical.port = ${port}
       akka.log-dead-letters-during-shutdown = off
       """).withFallback(MultiNodeClusterSpec.clusterConfig)
   }
