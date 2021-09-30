@@ -160,20 +160,6 @@ object MultiNodeSpec {
   require(selfName != "", "multinode.host must not be empty")
 
   /**
-   * Port number of this node.
-   *
-   * This is defined in function of property `multinode.protocol`.
-   * If set to 'udp', udpPort will be used. If unset or any other value, it will default to tcpPort.
-   */
-  val selfPort: Int =
-    System.getProperty("multinode.protocol") match {
-      case "udp" => udpPort.getOrElse(0)
-      case _     => tcpPort
-    }
-
-  require(selfPort >= 0 && selfPort < 65535, "multinode.port is out of bounds: " + selfPort)
-
-  /**
    * TCP Port number to be used when running tests on TCP. 0 means a random port.
    *
    * {{{
@@ -197,6 +183,20 @@ object MultiNodeSpec {
     }
 
   require(udpPort.getOrElse(1) >= 0 && udpPort.getOrElse(1) < 65535, "multinode.udp.port is out of bounds: " + udpPort)
+
+  /**
+   * Port number of this node.
+   *
+   * This is defined in function of property `multinode.protocol`.
+   * If set to 'udp', udpPort will be used. If unset or any other value, it will default to tcpPort.
+   */
+  val selfPort: Int =
+    System.getProperty("multinode.protocol") match {
+      case "udp" => udpPort.getOrElse(0)
+      case _     => tcpPort
+    }
+
+  require(selfPort >= 0 && selfPort < 65535, "multinode.port is out of bounds: " + selfPort)
 
   /**
    * Name (or IP address; must be resolvable using InetAddress.getByName)
