@@ -9,7 +9,7 @@ import akka.remote.testconductor.RoleName
 import akka.remote.testkit.{ MultiNodeConfig, MultiNodeSpec }
 
 abstract class AeronStreamMultiNodeSpec(config: MultiNodeConfig) extends MultiNodeSpec(config) {
-  
+
   def channel(roleName: RoleName) = {
     val n = node(roleName)
     val port = MultiNodeSpec.udpPort match {
