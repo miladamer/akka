@@ -20,7 +20,7 @@ To use Akka Persistence, add the module to your project:
   scope2=test
 }
 
-You also have to select durable state store plugin, see @ref:[Persistence Plugins](../../persistence-plugins.md).
+You also have to select durable state store plugin, see @ref:[Persistence Plugins](../../persistence-plugins.md)(Only akka-persistence-jdbc and akka-persistence-spanner are supported).
 
 @@@ warning
 
